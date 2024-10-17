@@ -38,7 +38,7 @@ const StocksAbmTableComponent = () => {
                     <ButtonGroup>
                         <StockFormModal stock={stock} isEdit={true} />
 
-                        <Tooltip color="danger" content="Eliminar">
+                        <Tooltip color="danger" content="Delete stock">
                             <Button isIconOnly color="danger" onPress={() => onDeletePressCallBack(stock)}><LuTrash /></Button>
                         </Tooltip>
                     </ButtonGroup>
@@ -53,18 +53,24 @@ const StocksAbmTableComponent = () => {
         console.log(stock);
 
         try {
-            const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}/stocks/${stock.id}`);
+            const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}/stock/${stock.id}`);
 
             removeStock(stock.id);
             console.info(response);
+
+            
+
         } catch (error) {
+            if (response.data.status > 399) {
+                alert(`Error: ${JSON.stringify(error.response.data, null, 2) || 'Ha ocurrido un error al eliminar el stock.'}`);
+            }
             console.error(error);
         }
     }, [])
 
     return (
         <>
-            <section className='min-h-screen container mx-auto flex flex-col justify-center items-center'>
+            <section className='my-10 py-10 container mx-auto flex flex-col justify-center items-center'>
                 <Table
                     isStriped
                     aria-label="Stocks table"
@@ -84,7 +90,7 @@ const StocksAbmTableComponent = () => {
                         {(label) => <TableColumn align='center' key={label.uuid}>{label.name}</TableColumn>}
                     </TableHeader>
                     <TableBody
-                        emptyContent={"No hay stocks para mostrar"}
+                        emptyContent={"Theres no stocks to show"}
                         items={estado.stocks}
                     >
                         {(stock) => (

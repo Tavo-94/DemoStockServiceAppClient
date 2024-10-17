@@ -8,7 +8,7 @@ const StockFormModal = ({ isEdit = false, stock }) => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     return (
         <>
-            <Tooltip color={isEdit ? 'warning' : 'primary'} aria-label={isEdit ? 'Editar Stock' : 'Crear Stock'} content={isEdit ? 'Editar Stock' : 'Crear Stock'}>
+            <Tooltip color={isEdit ? 'warning' : 'primary'} aria-label={isEdit ? 'Editar Stock' : 'Crear Stock'} content={isEdit ? 'Edit Stock' : 'Create Stock'}>
                 <Button onPress={onOpen} isIconOnly color={isEdit ? 'warning' : 'primary'}>{isEdit ? <LuPencil /> : <LuPlus />}</Button>
 
             </Tooltip>
@@ -20,7 +20,7 @@ const StockFormModal = ({ isEdit = false, stock }) => {
 
                             return (
                                 <>
-                                    <ModalHeader>{isEdit ? <h2 className='text-2xl font-bold'>Editar Stock</h2> : <h2 className='text-2xl font-bold'>Crear Stock</h2>}</ModalHeader>
+                                    <ModalHeader>{isEdit ? <h2 className='text-2xl font-bold'>Edit Stock</h2> : <h2 className='text-2xl font-bold'>Create Stock</h2>}</ModalHeader>
                                     <ModalBody>
                                         <StockForm isEdit={isEdit} stock={stock} onClose={onClose} />
                                     </ModalBody>

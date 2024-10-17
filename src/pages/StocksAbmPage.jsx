@@ -1,6 +1,6 @@
-import { Image, Spinner } from '@nextui-org/react'
+import { Button, Image, Spinner } from '@nextui-org/react'
 import axios from 'axios'
-import { base, div, img, section } from 'framer-motion/client'
+import { base, div, head, img, section } from 'framer-motion/client'
 import React, { useCallback, useEffect, useState } from 'react'
 import { set } from 'react-hook-form'
 import { useStocksAbmStore } from '../stores/stocksAbmStore'
@@ -11,6 +11,7 @@ const StocksAbmPage = () => {
 
 
     const [isLoading, setIsLoading] = useState(true)
+    const [isError, setIsError] = useState(false)
 
     const estado = useStocksAbmStore((state) => state.estado)
 
@@ -26,36 +27,56 @@ const StocksAbmPage = () => {
     const fetchStocksData = useCallback(async () => {
 
         try {
-            const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/stocks`);
+            const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/stock/`);
             console.log(response);
             const data = response.data
             console.log(response.data, "FETCHED DATA");
 
             setStocks(response.data);
 
-            console.log(Object.keys(data[0]), "LABELS");
-            const labels = Object.keys(data[0]).map((key, index) => {
-                return { name: key.toUpperCase(), uuid: key }
-            })
-            labels.push({ name: "ACTIONS", uuid: "actions" })
-            setLabels(labels)
+            if (response.data.length > 0) {
+                console.log(Object.keys(data[0]), "LABELS");
+                const labels = Object.keys(data[0]).map((key, index) => {
+                    return { name: key.toUpperCase(), uuid: key }
+                })
 
+                labels.push({ name: "ACTIONS", uuid: "actions" })
 
-            // setTimeout(() => {
-            //     setIsLoading(false);
-
-            // }, 3000, [])
-
+                setLabels(labels)
+            } else {
+                setLabels([
+                    { name: "ID", uuid: "id" },
+                    { name: "NAME", uuid: "name" },
+                    { name: "PRICE", uuid: "price" },
+                    { name: "DIVIDEND", uuid: "dividend" },
+                    { name: "ACTIONS", uuid: "actions" }
+                ])
+            }
+        
             setIsLoading(false);
+
+            setIsError(false);
+
+
         } catch (error) {
+            alert(`Error: ${JSON.stringify(error.message, null, 2) || 'Ha ocurrido un error al cargar los stock.'}`);
+            setIsLoading(false);
+
+            setIsError(true);
             console.log(error);
         }
-    }, [setStocks, setIsLoading])
+    }, [setStocks, setIsError, setLabels, setStocks])
 
     useEffect(() => {
 
-        fetchStocksData()
-    }, [fetchStocksData])
+
+        setTimeout(() => {
+            fetchStocksData()
+
+        }, 3000, [])
+
+
+    }, [fetchStocksData, isError])
 
     console.log(estado.stocks, "STORED DATA");
     console.log(estado.labels, "STORED LABELS");
@@ -78,7 +99,17 @@ const StocksAbmPage = () => {
                     </section>
                 ) : (
 
-                    <StocksAbmTableComponent />
+                    isError ? (
+                        <section className='min-h-screen flex flex-col justify-center items-center'>
+                            <h2 className='text-8xl font-bold'>Error fetching stocks</h2>
+                            <Button color="primary" size='lg' onPress={() => {
+                                setIsLoading(true)
+                                setIsError(false)
+                            }}>Try again</Button>
+                        </section>
+                    ) : (
+                        <StocksAbmTableComponent />
+                    )
                     //<div>tabla</div>
                 )
             }

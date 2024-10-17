@@ -11,8 +11,8 @@ const Footer = () => {
       </div>
 
       <div className='justify-self-end flex flex-col items-end gap-4 col-span-3 '>
-        <p className='text-white'>25 de Mayo 359 (C1002ABG) CABA Argentina</p>
-        <p className='text-white'>Tel./Fax: (+54 11) 4316.6000</p>
+        <p className='text-white'><Link to={"https://maps.app.goo.gl/gYrWZofibhbybLTt6"} target='_blank'>25 de Mayo 359 (C1002ABG) CABA Argentina</Link>  </p>
+        <p className='text-white'>Tel./Fax: <Link to={"tel:+54114316 6000"}>+54 11 4316 6000</Link> </p>
         <p className='text-white'><Link to={"mailto:info@byma.com.ar"}> Email: info@byma.com.ar</Link></p>
       </div>
     </footer>
