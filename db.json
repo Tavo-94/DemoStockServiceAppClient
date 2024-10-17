@@ -1,0 +1,52 @@
+{
+  "stocks": [
+    {
+      "id": 8,
+      "name": "Blaine Weeks",
+      "price": "541",
+      "dividend": "7"
+    },
+    {
+      "id": 9,
+      "name": "Pharma Leaders",
+      "price": 132.5,
+      "dividend": 2.7
+    },
+    {
+      "id": 10,
+      "name": "Tech Titans",
+      "price": 305.75,
+      "dividend": 1
+    },
+    {
+      "id": 11,
+      "name": "Baker Mullen",
+      "price": "17",
+      "dividend": "79"
+    },
+    {
+      "id": 12,
+      "name": "Mercedes Trujillo",
+      "price": "10",
+      "dividend": "71"
+    },
+    {
+      "id": 13,
+      "name": "Editado",
+      "price": "807",
+      "dividend": "100"
+    },
+    {
+      "id": 14,
+      "name": "Maya Simon",
+      "price": "717",
+      "dividend": "79"
+    },
+    {
+      "id": 15,
+      "name": "Tobias Mcintosh",
+      "price": "653",
+      "dividend": "23"
+    }
+  ]
+}

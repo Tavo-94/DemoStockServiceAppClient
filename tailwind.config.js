@@ -7,7 +7,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ], theme: {
-    extend: {},
+    extend: {
+      colors: {
+        bymaBgFooter: "#333",
+        bymaAccent: "#172953",
+        accent: "#f97316",
+      },
+    },
   },
   darkMode: "class",
   plugins: [nextui()]

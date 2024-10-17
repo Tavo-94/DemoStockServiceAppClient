@@ -24,6 +24,8 @@ function IndexCard() {
         </CardBody>
         <CardFooter className="gap-4">
           <Button onPress={() => navigate('/free-form-page')} variant="bordered" color="success">Crear una nueva accion</Button>
+          <Button onPress={() => navigate('/stocks-abm')} variant="bordered" color="default">ABM stocks</Button>
+
         </CardFooter>
       </Card>
     </>

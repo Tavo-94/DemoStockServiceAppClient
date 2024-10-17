@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import MainLayout from "./layouts/MainLayout"
 import HomePage from "./pages/HomePage"
 import FreeFormPage from "./pages/FreeFormPage"
+import StocksAbmPage from "./pages/StocksAbmPage"
 
 function App() {
   const router = createBrowserRouter([
@@ -13,13 +14,13 @@ function App() {
       children: [
         {
           path: "/",
-          element: <HomePage />,
+          element: <StocksAbmPage />,
         },
         {
-          path: "/free-form-page",
-          element: <FreeFormPage />,
-
+          path: "/stocks-abm",
+          element: <StocksAbmPage />
         }
+
       ]
     }
   ])
