@@ -1,6 +1,5 @@
 import { Button, Input } from '@nextui-org/react'
 import axios from 'axios'
-import { a } from 'framer-motion/client'
 import { useCallback, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { useStocksAbmStore } from '../stores/stocksAbmStore'

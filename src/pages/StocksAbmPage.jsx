@@ -1,8 +1,6 @@
 import { Button, Image, Spinner } from '@nextui-org/react'
 import axios from 'axios'
-import { base, div, head, img, section } from 'framer-motion/client'
 import React, { useCallback, useEffect, useState } from 'react'
-import { set } from 'react-hook-form'
 import { useStocksAbmStore } from '../stores/stocksAbmStore'
 import StocksAbmTableComponent from '../components/StocksAbmTableComponent'
 import bannerByma from '../assets/img/banner-byma.jpg'
