@@ -36,7 +36,7 @@ const StockForm = ({ isEdit = false, stock, onClose }) => {
         if (isEdit) {
 
             try {
-                const editResponse = await axios.put(`${import.meta.env.VITE_BASE_URL}/stock/${data.id}`, data);
+                const editResponse = await axios.put(`${import.meta.env.VITE_NETLIFY_BASE_API_URI}/stock/${data.id}`, data);
                 console.log(editResponse);
                 editStock(editResponse.data);
 
@@ -50,7 +50,7 @@ const StockForm = ({ isEdit = false, stock, onClose }) => {
         } else {
 
             try {
-                const addResponse = await axios.post(`${import.meta.env.VITE_BASE_URL}/stock/`, data);
+                const addResponse = await axios.post(`${import.meta.env.VITE_NETLIFY_BASE_API_URI}/stock/`, data);
                 console.log(addResponse);
                 addStock(addResponse.data);
 

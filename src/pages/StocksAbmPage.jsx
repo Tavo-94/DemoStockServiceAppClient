@@ -21,7 +21,7 @@ const StocksAbmPage = () => {
     const fetchStocksData = useCallback(async () => {
 
         try {
-            const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/stock/`);
+            const response = await axios.get(`${import.meta.env.VITE_NETLIFY_BASE_API_URI}/stock/`);
             console.log(response);
             const data = response.data
             console.log(response.data, "FETCHED DATA");

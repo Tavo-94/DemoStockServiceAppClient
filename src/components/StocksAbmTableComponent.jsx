@@ -53,7 +53,7 @@ const StocksAbmTableComponent = () => {
         console.log(stock);
 
         try {
-            const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}/stock/${stock.id}`);
+            const response = await axios.delete(`${import.meta.env.VITE_NETLIFY_BASE_API_URI}/stock/${stock.id}`);
 
             removeStock(stock.id);
             console.info(response);
