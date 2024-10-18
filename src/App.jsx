@@ -13,7 +13,7 @@ function App() {
       errorElement: <div>Error</div>,
       children: [
         {
-          path: "/",
+          index: true,
           element: <StocksAbmPage />,
         },
         {

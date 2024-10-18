@@ -18,11 +18,7 @@ const StocksAbmPage = () => {
     const setStocks = useStocksAbmStore((state) => state.setStocks)
     const setLabels = useStocksAbmStore((state) => state.setLabels)
 
-    const addStock = useStocksAbmStore((state) => state.addStock)
 
-    const removeStock = useStocksAbmStore((state) => state.removeStock)
-
-    const editStock = useStocksAbmStore((state) => state.editStock)
 
     const fetchStocksData = useCallback(async () => {
 
